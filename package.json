@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "name": "@carrot-kpi/trusted-oracle-contracts",
+    "version": "0.1.0",
+    "description": "A smart contract solution to enable trusted oracles on Carrot.",
+    "author": "Federico Luzzi <federico.luzzi@protonmail.com>",
+    "license": "GPL-3.0-or-later",
+    "scripts": {
+        "lint": "solhint './src/**/*.sol' './scripts/*.sol' './tests/**/*.sol' && prettier --check .",
+        "build": "forge build",
+        "build:production": "FOUNDRY_PROFILE=production forge build",
+        "lint:commit-message": "commitlint -e",
+        "test": "forge test",
+        "test:coverage": "forge coverage",
+        "test:gasreport": "forge test --gas-report"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.6.3",
+        "@commitlint/config-conventional": "^17.6.3",
+        "husky": "^8.0.3",
+        "prettier": "^2.8.8"
+    }
+}
