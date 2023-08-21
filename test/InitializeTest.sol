@@ -12,9 +12,7 @@ import {InitializeOracleParams} from "carrot/commons/Types.sol";
 /// @author Federico Luzzi - <federico.luzzi@protonmail.com>
 contract InitializeTest is BaseTestSetup {
     function testZeroAddressKpiToken() external {
-        MockOracle mockOracleInstance = MockOracle(
-            ClonesUpgradeable.clone(address(mockOracle))
-        );
+        MockOracle mockOracleInstance = MockOracle(ClonesUpgradeable.clone(address(mockOracle)));
         Template memory _template = oraclesManager.template(1);
         vm.expectRevert(abi.encodeWithSignature("ZeroAddressKpiToken()"));
         vm.prank(address(oraclesManager));
@@ -30,9 +28,7 @@ contract InitializeTest is BaseTestSetup {
     }
 
     function testSuccess() external {
-        MockOracle mockOracleInstance = MockOracle(
-            ClonesUpgradeable.clone(address(mockOracle))
-        );
+        MockOracle mockOracleInstance = MockOracle(ClonesUpgradeable.clone(address(mockOracle)));
         Template memory _template = oraclesManager.template(1);
         address kpiToken = address(1);
         vm.prank(address(oraclesManager));

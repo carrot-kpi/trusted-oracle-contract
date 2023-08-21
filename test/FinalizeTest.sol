@@ -12,9 +12,7 @@ import {InitializeOracleParams} from "carrot/commons/Types.sol";
 /// @author Federico Luzzi - <federico.luzzi@protonmail.com>
 contract InitializeTest is BaseTestSetup {
     function testAlreadyFinalized() external {
-        MockOracle oracleInstance = MockOracle(
-            ClonesUpgradeable.clone(address(mockOracle))
-        );
+        MockOracle oracleInstance = MockOracle(ClonesUpgradeable.clone(address(mockOracle)));
         Template memory _template = oraclesManager.template(1);
         address kpiToken = address(1);
         vm.prank(address(oraclesManager));
@@ -28,11 +26,7 @@ contract InitializeTest is BaseTestSetup {
             })
         );
 
-        vm.mockCall(
-            kpiToken,
-            abi.encodeWithSignature("finalize(uint256)", uint256(0)),
-            abi.encode()
-        );
+        vm.mockCall(kpiToken, abi.encodeWithSignature("finalize(uint256)", uint256(0)), abi.encode());
 
         vm.prank(ANSWERER);
         oracleInstance.finalize(0);
@@ -46,9 +40,7 @@ contract InitializeTest is BaseTestSetup {
     }
 
     function testNotAnswerer() external {
-        MockOracle oracleInstance = MockOracle(
-            ClonesUpgradeable.clone(address(mockOracle))
-        );
+        MockOracle oracleInstance = MockOracle(ClonesUpgradeable.clone(address(mockOracle)));
         Template memory _template = oraclesManager.template(1);
         address kpiToken = address(1);
         vm.prank(address(oraclesManager));
@@ -70,9 +62,7 @@ contract InitializeTest is BaseTestSetup {
     }
 
     function testSuccess() external {
-        MockOracle oracleInstance = MockOracle(
-            ClonesUpgradeable.clone(address(mockOracle))
-        );
+        MockOracle oracleInstance = MockOracle(ClonesUpgradeable.clone(address(mockOracle)));
         Template memory _template = oraclesManager.template(1);
         address kpiToken = address(1);
         vm.prank(address(oraclesManager));
@@ -86,17 +76,13 @@ contract InitializeTest is BaseTestSetup {
             })
         );
 
-        vm.mockCall(
-            kpiToken,
-            abi.encodeWithSignature("finalize(uint256)", uint256(0)),
-            abi.encode()
-        );
+        vm.mockCall(kpiToken, abi.encodeWithSignature("finalize(uint256)", uint256(0)), abi.encode());
 
         vm.prank(ANSWERER);
         oracleInstance.finalize(0);
 
         assertTrue(oracleInstance.finalized());
-        
+
         vm.clearMockedCalls();
     }
 }

@@ -6,7 +6,8 @@
     "author": "Federico Luzzi <federico.luzzi@protonmail.com>",
     "license": "GPL-3.0-or-later",
     "scripts": {
-        "lint": "solhint './src/**/*.sol' './scripts/*.sol' './tests/**/*.sol' && prettier --check .",
+        "lint": "forge fmt --check && prettier --check .",
+        "format": "forge fmt && prettier --write .",
         "build": "forge build",
         "build:production": "FOUNDRY_PROFILE=production forge build",
         "lint:commit-message": "commitlint -e",

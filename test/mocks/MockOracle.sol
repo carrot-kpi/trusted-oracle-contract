@@ -10,9 +10,7 @@ import {InitializeOracleParams} from "carrot/commons/Types.sol";
 contract MockOracle is TrustedOracle {
     constructor(address _answerer) TrustedOracle(_answerer) {}
 
-    function _initialize(
-        InitializeOracleParams memory _params
-    ) internal override {
+    function _initialize(InitializeOracleParams memory _params) internal override {
         // do nothing
     }
 

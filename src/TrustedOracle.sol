@@ -42,9 +42,7 @@ abstract contract TrustedOracle is IOracle, Initializable {
     /// up to the user by overriding the _initialize function. Please note that the internal
     /// state is set up only AFTER the custom user-defined logic has run, so accessing state
     /// variables in the custom logic must be avoided.
-    function initialize(
-        InitializeOracleParams memory _params
-    ) external payable override initializer {
+    function initialize(InitializeOracleParams memory _params) external payable override initializer {
         if (_params.kpiToken == address(0)) revert ZeroAddressKpiToken();
 
         _initialize(_params);
@@ -57,9 +55,7 @@ abstract contract TrustedOracle is IOracle, Initializable {
         emit Initialize(_params.kpiToken, _params.templateId);
     }
 
-    function _initialize(
-        InitializeOracleParams memory _params
-    ) internal virtual;
+    function _initialize(InitializeOracleParams memory _params) internal virtual;
 
     /// @dev The finalization function checks that the msg.sender is indeed the answerer and
     /// forwards the answer to the linked KPI token.
@@ -78,10 +74,6 @@ abstract contract TrustedOracle is IOracle, Initializable {
     /// @dev View function returning info about the template used to instantiate this oracle.
     /// @return The template struct.
     function template() external view override returns (Template memory) {
-        return
-            IBaseTemplatesManager(oraclesManager).template(
-                templateId,
-                templateVersion
-            );
+        return IBaseTemplatesManager(oraclesManager).template(templateId, templateVersion);
     }
 }

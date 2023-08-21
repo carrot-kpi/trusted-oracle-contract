@@ -28,17 +28,11 @@ abstract contract BaseTestSetup is Test {
 
         mockKPIToken = new MockKPIToken();
         kpiTokensManager = new KPITokensManager1(address(factory));
-        kpiTokensManager.addTemplate(
-            address(mockKPIToken),
-            "test-specification"
-        );
+        kpiTokensManager.addTemplate(address(mockKPIToken), "test-specification");
 
         mockOracle = new MockOracle(ANSWERER);
         oraclesManager = new OraclesManager1(address(factory));
-        oraclesManager.addTemplate(
-            address(mockOracle),
-            TRUSTED_ORACLE_SPECIFICATION
-        );
+        oraclesManager.addTemplate(address(mockOracle), TRUSTED_ORACLE_SPECIFICATION);
 
         factory.setKpiTokensManager(address(kpiTokensManager));
         factory.setOraclesManager(address(oraclesManager));
