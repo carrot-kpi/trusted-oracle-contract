@@ -7,7 +7,7 @@ import {InitializeOracleParams} from "carrot/commons/Types.sol";
 import {IBaseTemplatesManager, Template} from "carrot/interfaces/IBaseTemplatesManager.sol";
 
 /// SPDX-License-Identifier: GPL-3.0-or-later
-/// @title Trsuted oracle
+/// @title Trusted oracle
 /// @dev A base oracle template implementation that allows an external predefined answerer to
 /// finalize the oracle when it decides the time has come. This is intended to be a base contract
 /// from which to start building more refined finalization strategies based on an external trusted
