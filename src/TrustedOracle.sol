@@ -61,10 +61,13 @@ abstract contract TrustedOracle is IOracle, Initializable {
     /// forwards the answer to the linked KPI token.
     function finalize(uint256 _result) external {
         if (finalized || msg.sender != answerer) revert Forbidden();
+        _finalize(_result);
         finalized = true;
         IKPIToken(kpiToken).finalize(_result);
         emit Finalize(_result);
     }
+
+    function _finalize(uint256 _result) internal virtual;
 
     /// @dev View function returning all the most important data about the oracle, in
     /// an ABI-encoded structure. This must be extended by users.

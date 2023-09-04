@@ -13,6 +13,10 @@ contract MockOracle is TrustedOracle {
     function _initialize(InitializeOracleParams memory _params) internal override {
         // do nothing
     }
+    
+    function _finalize(uint256 _result) internal override {
+        // do nothing
+    }
 
     function data() external view virtual override returns (bytes memory) {
         return abi.encode(answerer);
